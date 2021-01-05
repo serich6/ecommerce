@@ -18,6 +18,7 @@ import com.auth0.jwt.JWT;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
+// REFERENCE NOTE: From Authentication and Authorization video 12
 @Component
 public class JWTAuthenticationVerificationFilter extends BasicAuthenticationFilter {
 

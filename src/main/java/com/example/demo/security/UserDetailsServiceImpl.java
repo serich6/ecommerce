@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.persistence.User;
 import com.example.demo.model.persistence.repositories.UserRepository;
 
+// REFERENCE NOTE: From Authentication and Authorization video 12
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     private static final Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);

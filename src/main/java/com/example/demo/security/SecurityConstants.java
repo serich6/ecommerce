@@ -1,5 +1,6 @@
 package com.example.demo.security;
 
+// REFERENCE NOTE: From Authentication and Authorization video 12
 public class SecurityConstants {
 
     public static final String SECRET = "oursecretkey";
