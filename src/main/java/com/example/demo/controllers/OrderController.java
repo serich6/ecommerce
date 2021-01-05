@@ -36,7 +36,7 @@ public class OrderController {
 		logger.info("SUBMIT_ORDER_REQUEST_INITIATED: Attempting to submit order for user: " + username);
 		User user = userRepository.findByUsername(username);
 		if(user == null) {
-			logger.error("ERROR: User not found during order submission");
+			logger.error("SUBMIT_ORDER_ERROR: User not found during order submission");
 			return ResponseEntity.notFound().build();
 		}
 		UserOrder order = UserOrder.createFromCart(user.getCart());
@@ -50,7 +50,7 @@ public class OrderController {
 		logger.info("GET_ORDER_REQUEST_INITIATED: Attempting to find orders for user: " + username);
 		User user = userRepository.findByUsername(username);
 		if(user == null) {
-			logger.error("ERROR: User not found during order history pull");
+			logger.error("GET_ORDER_ERROR: User not found during order history pull");
 			return ResponseEntity.notFound().build();
 		}
 		logger.info("GET_ORDER_HISTORY_REQUEST_SUCCESS: Order history fetched with username: " + username);

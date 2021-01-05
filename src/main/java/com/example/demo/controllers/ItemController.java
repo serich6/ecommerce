@@ -38,7 +38,7 @@ public class ItemController {
 		logger.info("GET_ITEMS_REQUEST: Attempting to get items with name: " + name);
 		List<Item> items = itemRepository.findByName(name);
 		if (items == null || items.isEmpty()) {
-			logger.warn("ERROR: No items found with name: " + name);
+			logger.warn("GET_ITEMS_REQUEST_ERROR: No items found with name: " + name);
 			return ResponseEntity.notFound().build();
 		}
 		logger.info("GET_ITEMS_REQUEST_SUCCESS: Item(s) found.");

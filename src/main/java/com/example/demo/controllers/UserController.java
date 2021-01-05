@@ -43,7 +43,13 @@ public class UserController {
 	public ResponseEntity<User> findByUserName(@PathVariable String username) {
 		logger.info("FIND_USER_BY_NAME_REQUEST_INITIATED: Lookup user with name: " + username);
 		User user = userRepository.findByUsername(username);
-		return user == null ? ResponseEntity.notFound().build() : ResponseEntity.ok(user);
+		if (user == null) {
+			logger.error("EXCEPTION: USER NOT FOUND");
+			return ResponseEntity.notFound().build();
+		}
+		else {
+			return ResponseEntity.ok(user);
+		}
 	}
 	
 	@PostMapping("/create")
@@ -56,12 +62,12 @@ public class UserController {
 		user.setCart(cart);
 		// make sure the pw and confirm fields match
 		if (!createUserRequest.getPassword().equals(createUserRequest.getConfirmedPassword())) {
-			logger.error("ERROR: confirm password field doesn't match original password");
+			logger.error("CREATE_USER_ERROR: confirm password field doesn't match original password");
 			return ResponseEntity.badRequest().build();
 		}
 		// can add passcode requirements here (ex: length > 4)
 		if (createUserRequest.getPassword().length() < 5) {
-			logger.error("ERROR: passcode too short, must be at least 5 characters");
+			logger.error("CREATE_USER_ERROR: passcode too short, must be at least 5 characters");
 			return ResponseEntity.badRequest().build();
 		}
 
